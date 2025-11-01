@@ -1,5 +1,9 @@
 //pseudo code
-
+// check the code if its working
+// make it personalized to build a spa site
+// added the trash can by updating the link to font awsome changed the version from 403 to 407 and it worked
+// did some styling alone and added more using AI and google 
+// last step is to host the project using render after pushing it to github
 
 
 
