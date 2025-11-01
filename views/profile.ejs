@@ -14,28 +14,10 @@
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
 
-    <div class="row">
+    
 
-        <!-- LOCAL INFORMATION -->
-        <!-- <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                <% if (user.local.email) { %>
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %>
-                    </p>
-
-                    <a href="/unlink/local" class="btn btn-default">Unlink</a>
-                <% } else { %>
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-                <% } %>
-
-            </div>
-        </div>
-        <div class="col-sm-6"> -->
+       
+        <div class="col-sm-6">
           <h3>Services</h3>
           <ul class="messages">
           <% for(var i=0; i<messages.length; i++) {%>
@@ -53,7 +35,6 @@
           <h2>Add a service</h2>
         <% if (user.local.email) { %>
           <form action="/messages" method="POST">
-            <!-- <input type="text" value="<%= user.local.email %>" name="name"> -->
             <input type="text" placeholder="service" name="msg">
             <button type="submit">Submit</button>
           </form>
@@ -61,6 +42,50 @@
         <% } %>
 
 </div>
+ <h2>Book an Appointment</h2>
+    <form action="/book-appointment" method="POST">
+        
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone">
+        </div>
+
+        <div class="form-group">
+            <label for="appointmentDate">Appointment Date:</label>
+            <input type="date" id="appointmentDate" name="appointmentDate" required>
+        </div>
+
+        <div class="form-group">
+            <label for="appointmentTime">Preferred Time Slot:</label>
+            <select id="appointmentTime" name="appointmentTime" required>
+                <option value="">Select a time</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="service">Service Needed:</label>
+            <textarea id="service" name="service" rows="3"></textarea>
+        </div>
+
+        <button type="submit">Schedule Appointment</button>
+
+    </form>
 
 <script src="main.js"></script>
 
