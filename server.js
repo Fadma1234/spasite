@@ -47,8 +47,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
+app.get("/", (req, res) => {
+  res.send("🚀 Server is live and working!");
+});
+
 
 
 // launch ======================================================================
+
 app.listen(port);
 console.log('The magic happens on port ' + port);
