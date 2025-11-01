@@ -66,6 +66,12 @@ module.exports = function(app, passport, db) {
         res.send(result)
       })
     })
+    app.post('/book-appointment', (req, res) => {
+    
+   console.log(req.body);
+    res.send('Success!');
+});
+
 
     app.delete('/messages', (req, res) => {
       db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {

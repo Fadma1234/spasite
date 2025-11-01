@@ -1,7 +1,3 @@
-// server.js
-
-// set up ======================================================================
-// get all the tools we need
 var express  = require('express');
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -20,21 +16,16 @@ var configDB = require('./config/database.js');
 var db
 
 // configuration ===============================================================
-mongoose.connect(configDB.url, (err, database) => {
-  if (err) return console.log(err)
-  db = database
-  require('./app/routes.js')(app, passport, db);
-}); // connect to our database
+mongoose.connect(configDB.url); // Connect to our database without the callback wrapper
 
 require('./config/passport')(passport); // pass passport for configuration
 
-// set up our express application
+// set up our express application (Middleware must come first!)
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(bodyParser.json()); // get information from html forms
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'))
-
 
 app.set('view engine', 'ejs'); // set up ejs for templating
 
@@ -45,9 +36,23 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
+app.use(passport.session()); 
+app.use(flash()); 
 
+
+// routes ======================================================================
+// Load our routes definition file AFTER all middleware is initialized
+// We need a slight change to how you pass 'db' here, as we get the db object later in Mongoose 5+
+// A common approach is to make 'db' accessible globally or change how you connect.
+
+// A standard way to manage this with newer Mongoose is often to pass the connection object itself.
+// For now, let's assume your previous method of passing 'db' works once connected:
+
+mongoose.connection.once('open', () => {
+    console.log('Connected to Mongo via Mongoose');
+    db = mongoose.connection.db;
+    require('./app/routes.js')(app, passport, db);
+});
 
 
 // launch ======================================================================
