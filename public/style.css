@@ -1,0 +1,134 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  display: flex;
+  flex-direction: column; 
+ 
+}
+img{
+  height: 200px;
+}
+.messages{
+  list-style: none;
+  color: brown;
+   align-items: center;
+}
+h1,h2, h3{
+  color: rgb(136, 117, 117);
+  font-size: 800;
+   align-items: center;
+}
+button {
+  /* Background and Color */
+  background-color: #cad394; /* Sets the background color */
+  color: white; /* Sets the text color */
+
+  /* Border and Shape */
+  border: none; /* Removes the default border */
+  border-radius: 5px; /* Adds rounded corners */
+
+  /* Spacing and Layout */
+  padding: 10px 20px; /* Adds space inside the button */
+  margin: 5px; /* Adds space around the button */
+  display: inline-block; /* Ensures proper alignment and sizing */
+
+  /* Text Styling */
+  font-family: Arial, sans-serif; /* Sets the font family */
+  font-size: 16px; /* Sets the font size */
+  font-weight: bold; /* Makes the text bold */
+  text-align: center; /* Centers the text */
+  text-decoration: none; /* Removes underline for <a> elements */
+
+  /* Interactivity */
+  cursor: pointer; /* Changes the mouse cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition for background color changes */
+}
+
+/* Hover and Active States */
+button:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}
+
+button:active {
+  background-color: #004085; /* Even darker background when clicked */
+  transform: translateY(1px); /* Slight downward shift for a "pressed" effect */
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  width: 70%; /* Full width */
+  padding: 12px; /* Inner spacing */
+  margin: 8px 0; /* Vertical spacing */
+  display: inline-block; /* Allows width to be set */
+  border: 1px solid #ccc; /* Border style */
+  border-radius: 4px; /* Rounded corners */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  outline: none; /* Remove default outline */
+ }
+.jumbotron text-center, .container{
+    background-color: #cad394;
+}
+.auth-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    align-items: center;
+}
+
+/* Base styles for the 'btn' class */
+.btn {
+    display: inline-flex; /* Align icon and text horizontally */
+    align-items: center; /* Center them vertically */
+    justify-content: center;
+    padding: 8px 16px; /* Vertical and horizontal padding */
+    font-size: 16px;
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    font-family: sans-serif; /* A clean, common font */
+}
+
+/* Styles for the 'btn-default' theme */
+.btn-default {
+    color: #333; /* Dark gray text color */
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Light gray border */
+}
+
+/* Hover and focus states for better user feedback */
+.btn-default:hover,
+.btn-default:focus {
+    color: #333;
+    background-color: #e6e6e6; /* Lighter gray on hover */
+    border-color: #adadad;
+}
+
+/* Style for the icon within the button */
+.btn .fa {
+    margin-right: 8px; /* Space between the icon and the text */
+}
+
+/* Optional: Additional styles for a "primary" button variant if you want the Signup button to stand out */
+.btn-primary {
+    color: #fff;
+    background-color: #007bff; /* Blue background */
+    border-color: #007bff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #004494;
+}
+
+/* Example of how to apply the primary style in your HTML: */
+/* <a href="/signup" class="btn btn-primary"><span class="fa fa-user"></span>Signup</a> */
+Use code with cautio
