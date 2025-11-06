@@ -1,79 +1,77 @@
 //pseudo code
-// check the code if its working
+// check the code if its working if not update to make it work
 // make it personalized to build a spa site
-// added the trash can by updating the link to font awsome changed the version from 403 to 407 and it worked
-// did some styling alone and added more using AI and google 
+// did  use AI and google help in this project
+// I had a lot of trouble to make the delete and put req to work
 // last step is to host the project using render after pushing it to github
 
 
 
 
 
-let thumbUp = document.getElementsByClassName("fa-thumbs-up");
-let trash = document.getElementsByClassName("fa-trash");
-let thumbDown = document.getElementsByClassName("fa fa-thumbs-down");
-Array.from(thumbUp).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messages', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg,
-            'thumbUp':thumbUp
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
-Array.from(thumbDown).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        const thumbUp = parseFloat(this.parentNode.parentNode.childNodes[5].innerText)
-        fetch('messagesDown', {
-          method: 'put',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg,
-            'thumbUp':thumbUp
-          })
-        })
-        .then(response => {
-          if (response.ok) return response.json()
-        })
-        .then(data => {
-          console.log(data)
-          window.location.reload(true)
-        })
-      });
-});
 
-Array.from(trash).forEach(function(element) {
-      element.addEventListener('click', function(){
-        const name = this.parentNode.parentNode.childNodes[1].innerText
-        const msg = this.parentNode.parentNode.childNodes[3].innerText
-        fetch('messages', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'name': name,
-            'msg': msg
-          })
-        }).then(function (response) {
-          window.location.reload()
-        })
-      });
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Delete Functionality ---
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    Array.from(deleteButtons).forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const appointmentId = e.target.dataset.id;
+
+            fetch('/appointment', {
+                method: 'delete',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    '_id': appointmentId // Send the ID to the server
+                })
+            })
+                .then(response => {
+                    if (response.ok) return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    window.location.reload(true); // Reload the page to update the list
+                })
+                .catch(err => console.error(err));
+        });
+    });
+
+    // --- Update Functionality (Reschedule) ---
+    const updateButtons = document.querySelectorAll('.update-btn');
+
+    Array.from(updateButtons).forEach((button) => {
+        button.addEventListener('click', (e) => {
+            const appointmentId = e.target.dataset.id;
+            const currentDate = e.target.dataset.currentDate;
+            const currentTime = e.target.dataset.currentTime;
+
+            const newDate = prompt(`Enter new date (YYYY-MM-DD):`, currentDate);
+            const newTime = prompt(`Enter new time (HH:MM e.g., 14:00):`, currentTime);
+
+            if (newDate && newTime) {
+                fetch('/appointment', {
+                    method: 'put',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        '_id': appointmentId,
+                        'newDate': newDate,
+                        'newTime': newTime
+                    })
+                })
+                    .then(response => {
+                        if (response.ok) return response.json();
+                    })
+                    .then(data => {
+                        console.log(data);
+                        window.location.reload(true); // Reload the page to show the updated time
+                    })
+                    .catch(err => console.error(err));
+            }
+        });
+    });
 });
