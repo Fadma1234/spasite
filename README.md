@@ -1,4 +1,5 @@
 ### spasite
+<img width="1920" alt="image" src="https://github.com/user-attachments/assets/ca049e6e-4185-4654-9e87-2d3c13d20bef" />
 
 ## Features
 
