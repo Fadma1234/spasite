@@ -1,30 +1,22 @@
 ### spasite
 <img width="1920" alt="image" src="https://github.com/user-attachments/assets/ca049e6e-4185-4654-9e87-2d3c13d20bef" />
 
-## Features
+### Tech Stack
+- HTML
 
-*   **User Authentication:** Secure user login and registration.
-*   **Dynamic Content:** Server-side rendered pages using EJS.
-*   **Styling:** Responsive user interface built with standard CSS.
-*   **Database Integration:** Seamless integration with MongoDB for data persistence.
+- CSS
+  
+- JavaScript
+  
+- Node.js
+  
+- Express.js
+  
+- MongoDB
+  
+- EJS
 
-## Tech Stack
 
-This application is built using the following technologies:
+### Live Demo
+Click the link on the right under About to see the live demo.
 
-### Back-end
-
-*   **Node.js** - JavaScript runtime environment.
-*   **Express.js** - Web application framework.
-*   **EJS (Embedded JavaScript)** - Templating engine for dynamic HTML.
-*   **MongoDB**
-
-### Front-end
-
-*   **HTML5**
-*   **CSS3**
-
-### Tools & Dependencies
-
-*   **npm** - Package manager.
-*   **Other key dependencies:** `bcrypt` and `mongoose`.
